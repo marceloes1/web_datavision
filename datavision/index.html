@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Academia de Data Engineering, Analytics e Inteligencia Artificial. Bootcamps en vivo y certificaciones cloud.">
+    <title>DataVision Academy - Escuela de Data e IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary: #ec4899;
+            --bg-dark: #0f172a;
+            --bg-light: #f8fafc;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: white;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .btn-nav:hover {
+            background: var(--primary-dark);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2rem;
+            border: 2px solid white;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+
+        /* ===== STATS ===== */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+            background: var(--bg-light);
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            color: var(--text-light);
+        }
+
+        /* ===== SECCIÓN PROGRAMAS ===== */
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+        }
+
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 0.8rem;
+            padding: 2rem;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .program-card:hover {
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            transform: translateY(-4px);
+            border-color: var(--primary);
+        }
+
+        .program-card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .program-card .price {
+            color: var(--secondary);
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 1rem 0;
+        }
+
+        .program-card ul {
+            list-style: none;
+            margin: 1rem 0;
+            color: var(--text-light);
+        }
+
+        .program-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .program-card li:before {
+            content: "✓ ";
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* ===== FORMULARIO ===== */
+        .contact-section {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #1e293b 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .contact-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 0.5rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255,255,255,0.6);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .btn-submit {
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .btn-submit:hover {
+            background: #be185d;
+        }
+
+        /* ===== TESTIMONIOS ===== */
+        .testimonials {
+            background: var(--bg-light);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.8rem;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-card .stars {
+            color: #fbbf24;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .testimonial-card p {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        .social-icons a {
+            color: #94a3b8;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: var(--primary);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* ===== ANIMACIONES ===== */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero, .section, .contact-section, footer {
+            animation: fadeIn 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#" class="logo">📊 DataVision</a>
+        <ul class="nav-links">
+            <li><a href="#programas">Programas</a></li>
+            <li><a href="#testimonios">Testimonios</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="#" class="btn-nav">Asesoría Gratis</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Inicia tu carrera en Data e Inteligencia Artificial</h1>
+        <p>Bootcamps en vivo, cursos on-demand y certificaciones cloud para transformar tu carrera profesional</p>
+        <div class="cta-buttons">
+            <button class="btn-primary" onclick="scrollToForm()">Solicitar Asesoría</button>
+            <button class="btn-secondary" onclick="scrollToPrograms()">Ver Programas</button>
+        </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats">
+        <div class="stat-item">
+            <h3>+5,000</h3>
+            <p>Estudiantes Activos</p>
+        </div>
+        <div class="stat-item">
+            <h3>15+</h3>
+            <p>Programas Disponibles</p>
+        </div>
+        <div class="stat-item">
+            <h3>4.9★</h3>
+            <p>Rating Promedio</p>
+        </div>
+        <div class="stat-item">
+            <h3>95%</h3>
+            <p>Empleabilidad</p>
+        </div>
+    </section>
+
+    <!-- PROGRAMAS -->
+    <section class="section" id="programas">
+        <h2>Nuestros Programas Estrella</h2>
+        <div class="programs-grid">
+            <!-- Data Engineer -->
+            <div class="program-card">
+                <h3>🔧 Data Engineer</h3>
+                <p class="price">$599</p>
+                <p>12 semanas | Bootcamp en vivo</p>
+                <ul>
+                    <li>Python & SQL Avanzado</li>
+                    <li>ETL & Pipelines</li>
+                    <li>Apache Airflow</li>
+                    <li>BigQuery & Spark</li>
+                    <li>Certificado Oficial</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('Data Engineer')">Inscribirse</button>
+            </div>
+
+            <!-- AI Engineer -->
+            <div class="program-card">
+                <h3>🤖 AI Engineer</h3>
+                <p class="price">$699</p>
+                <p>14 semanas | Bootcamp en vivo</p>
+                <ul>
+                    <li>LLMs y Transformers</li>
+                    <li>Prompt Engineering</li>
+                    <li>LangChain & CrewAI</li>
+                    <li>Agentes Inteligentes</li>
+                    <li>Despliegue en Producción</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('AI Engineer')">Inscribirse</button>
+            </div>
+
+            <!-- Data Analyst -->
+            <div class="program-card">
+                <h3>📈 Data Analyst</h3>
+                <p class="price">$399</p>
+                <p>10 semanas | Bootcamp en vivo</p>
+                <ul>
+                    <li>Excel & SQL</li>
+                    <li>Power BI & Tableau</li>
+                    <li>Storytelling con Datos</li>
+                    <li>A/B Testing</li>
+                    <li>Dashboards Interactivos</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('Data Analyst')">Inscribirse</button>
+            </div>
+
+            <!-- Cloud Engineer -->
+            <div class="program-card">
+                <h3>☁️ Cloud Engineer</h3>
+                <p class="price">$549</p>
+                <p>12 semanas | Bootcamp en vivo</p>
+                <ul>
+                    <li>AWS & Google Cloud</li>
+                    <li>Docker & Kubernetes</li>
+                    <li>Infrastructure as Code</li>
+                    <li>CI/CD Pipelines</li>
+                    <li>Certificaciones Cloud</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('Cloud Engineer')">Inscribirse</button>
+            </div>
+
+            <!-- ML Engineer -->
+            <div class="program-card">
+                <h3>🧠 ML Engineer</h3>
+                <p class="price">$649</p>
+                <p>16 semanas | Bootcamp en vivo</p>
+                <ul>
+                    <li>Machine Learning Avanzado</li>
+                    <li>TensorFlow & PyTorch</li>
+                    <li>MLOps & Monitoring</li>
+                    <li>Computer Vision</li>
+                    <li>Proyectos en Producción</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('ML Engineer')">Inscribirse</button>
+            </div>
+
+            <!-- Cursos On-Demand -->
+            <div class="program-card">
+                <h3>📚 Cursos On-Demand</h3>
+                <p class="price">$99-199</p>
+                <p>Flexible | Acceso de por vida</p>
+                <ul>
+                    <li>Aprende a tu ritmo</li>
+                    <li>+50 horas de contenido</li>
+                    <li>Proyectos Prácticos</li>
+                    <li>Comunidad Activa</li>
+                    <li>Certificado Digital</li>
+                </ul>
+                <button class="btn-primary" style="width: 100%; margin-top: 1rem;" onclick="selectProgram('Cursos On-Demand')">Explorar</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIOS -->
+    <section class="section testimonials" id="testimonios">
+        <h2>Lo que dicen nuestros estudiantes</h2>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"DataVision cambió mi carrera. Pasé de analista junior a Data Engineer en 6 meses. Los profesores son increíbles."</p>
+                <div class="testimonial-author">- Carlos M. | Lima, Perú</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"El bootcamp es intenso pero vale cada peso. Tengo 3 ofertas laborales como AI Engineer. ¡Recomendado!"</p>
+                <div class="testimonial-author">- María L. | Bogotá, Colombia</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"La comunidad y el soporte son excepcionales. Terminé con un portfolio que me abrió puertas."</p>
+                <div class="testimonial-author">- Juan P. | México CDMX</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Mejor inversión en mi educación. Ahora trabajo en una de las top 5 empresas de tech. Gracias DataVision."</p>
+                <div class="testimonial-author">- Sofía R. | Santiago, Chile</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"Los instructores son profesionales en activo. Aprendes lo que realmente se necesita en la industria."</p>
+                <div class="testimonial-author">- Roberto T. | Buenos Aires, Argentina</div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="stars">★★★★★</div>
+                <p>"De cero a Data Engineer en 3 meses. Las sesiones en vivo y los proyectos reales hacen la diferencia."</p>
+                <div class="testimonial-author">- Ana V. | Medellín, Colombia</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO -->
+    <section class="contact-section" id="contacto">
+        <h2>¿Listo para transformar tu carrera?</h2>
+        <p style="margin-bottom: 2rem; opacity: 0.9;">Déjanos tus datos y un asesor se comunicará contigo en 24 horas</p>
+        
+        <div class="contact-container">
+            <form id="contactForm" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label>Nombre Completo *</label>
+                    <input type="text" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>WhatsApp (con código país) *</label>
+                    <input type="tel" name="whatsapp" placeholder="+51 999888777" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Programa de Interés *</label>
+                    <select name="programa" required>
+                        <option value="">Selecciona un programa...</option>
+                        <option value="Data Engineer">Data Engineer</option>
+                        <option value="AI Engineer">AI Engineer</option>
+                        <option value="Data Analyst">Data Analyst</option>
+                        <option value="Cloud Engineer">Cloud Engineer</option>
+                        <option value="ML Engineer">ML Engineer</option>
+                        <option value="Cursos On-Demand">Cursos On-Demand</option>
+                        <option value="Sin definir">Aún no sé cuál</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>¿Cuál es tu experiencia en programación?</label>
+                    <select name="experiencia">
+                        <option value="">Selecciona...</option>
+                        <option value="Principiante">Principiante</option>
+                        <option value="Intermedio">Intermedio</option>
+                        <option value="Avanzado">Avanzado</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Mensaje (Opcional)</label>
+                    <textarea name="mensaje" placeholder="Cuéntanos más sobre ti..."></textarea>
+                </div>
+
+                <button type="submit" class="btn-submit">Solicitar Asesoría Gratuita</button>
+                <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.8;">
+                    Al enviar aceptas nuestra política de privacidad
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-links">
+            <a href="#programas">Programas</a>
+            <a href="#testimonios">Testimonios</a>
+            <a href="#">Blog</a>
+            <a href="#">Términos</a>
+            <a href="#">Privacidad</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="#" title="LinkedIn">in</a>
+            <a href="#" title="Instagram">📸</a>
+            <a href="#" title="YouTube">▶</a>
+            <a href="#" title="Twitter">𝕏</a>
+        </div>
+
+        <p>&copy; 2024 DataVision Academy. Transformando carreras en Data e IA</p>
+        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.7;">
+            Contacto: <a href="tel:+51999999999" style="color: var(--primary);">+51 999 999 999</a> | 
+            <a href="mailto:hola@datavision.com" style="color: var(--primary);">hola@datavision.com</a>
+        </p>
+    </footer>
+
+    <script>
+        // Función para seleccionar programa
+        let selectedProgram = '';
+
+        function selectProgram(program) {
+            selectedProgram = program;
+            document.querySelector('select[name="programa"]').value = program;
+            scrollToForm();
+        }
+
+        // Scroll suave
+        function scrollToForm() {
+            document.getElementById('contacto').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function scrollToPrograms() {
+            document.getElementById('programas').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Manejo del formulario
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const formData = {
+                nombre: document.querySelector('input[name="nombre"]').value,
+                email: document.querySelector('input[name="email"]').value,
+                whatsapp: document.querySelector('input[name="whatsapp"]').value,
+                programa: document.querySelector('select[name="programa"]').value,
+                experiencia: document.querySelector('select[name="experiencia"]').value,
+                mensaje: document.querySelector('textarea[name="mensaje"]').value,
+                timestamp: new Date().toLocaleString()
+            };
+
+            // Guardar en localStorage
+            let leads = JSON.parse(localStorage.getItem('leads')) || [];
+            leads.push(formData);
+            localStorage.setItem('leads', JSON.stringify(leads));
+
+            // Mostrar confirmación
+            alert(`¡Gracias ${formData.nombre}! Te contactaremos pronto al ${formData.whatsapp}`);
+
+            // Limpiar formulario
+            document.getElementById('contactForm').reset();
+
+            // En producción, aquí enviarías los datos a tu backend
+            console.log('Lead capturado:', formData);
+        }
+
+        // Cargar leads guardados en consola
+        window.verLeads = function() {
+            const leads = JSON.parse(localStorage.getItem('leads')) || [];
+            console.table(leads);
+            return leads;
+        };
+
+        console.log('💡 Para ver los leads capturados, escribe: verLeads()');
+    </script>
+</body>
+</html>
